@@ -25,6 +25,7 @@ public class AddNewRequest {
     private String group;
     private String designation;
     private String assignTo;
+    private String assignToName;
     private String assignedBy;
     private String remarks;
     private String status = "Pending";
@@ -144,6 +145,14 @@ public class AddNewRequest {
         this.assignTo = assignTo;
     }
 
+    public String getAssignToName() {
+        return assignToName;
+    }
+
+    public void setAssignToName(String assignToName) {
+        this.assignToName = assignToName;
+    }
+
     public String getAssignedBy() {
         return assignedBy;
     }
@@ -176,6 +185,7 @@ public class AddNewRequest {
         this.attachments = attachments;
     }
 
+    // ✅ NEW GETTERS AND SETTERS FOR FORWARDING FIELDS
     public String getForwardedBy() {
         return forwardedBy;
     }
@@ -199,6 +209,7 @@ public class AddNewRequest {
     public void setLastForwardedDate(String lastForwardedDate) {
         this.lastForwardedDate = lastForwardedDate;
     }
+
 
     public static class Attachment {
         private String cout;
@@ -262,6 +273,7 @@ public class AddNewRequest {
         private String forwardedTo;
         private String remarks;
 
+
         public ForwardingHistory() {
         }
 
@@ -323,6 +335,6 @@ public class AddNewRequest {
 
     @Override
     public String toString() {
-        return "AddNewRequest{" + "id='" + id + '\'' + ", requestId='" + requestId + '\'' + ", status='" + status + '\'' + ", assignedBy='" + assignedBy + '\'' + ", assignTo='" + assignTo + '\'' + ", forwardedBy='" + forwardedBy + '\'' + '}';
+        return "AddNewRequest{" + "id='" + id + '\'' + ", requestId='" + requestId + '\'' + ", status='" + status + '\'' + ", assignedBy='" + assignedBy + '\'' + ", assignTo='" + assignTo + '\'' + ", assignToName='" + assignToName + '\'' + ", forwardedBy='" + forwardedBy + '\'' + '}';
     }
 }
