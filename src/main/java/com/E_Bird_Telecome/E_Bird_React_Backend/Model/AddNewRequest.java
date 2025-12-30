@@ -185,8 +185,7 @@ public class AddNewRequest {
         this.attachments = attachments;
     }
 
-    // ✅ NEW GETTERS AND SETTERS FOR FORWARDING FIELDS
-    public String getForwardedBy() {
+     public String getForwardedBy() {
         return forwardedBy;
     }
 
@@ -212,7 +211,7 @@ public class AddNewRequest {
 
 
     public static class Attachment {
-        private String cout;
+//        private String cout;
         private String title;
         private String size;
         private String attachName;
@@ -221,19 +220,19 @@ public class AddNewRequest {
         }
 
         public Attachment(String cout, String title, String size, String attachName) {
-            this.cout = cout;
+//            this.cout = cout;
             this.title = title;
             this.size = size;
             this.attachName = attachName;
         }
 
-        public String getCout() {
-            return cout;
-        }
-
-        public void setCout(String cout) {
-            this.cout = cout;
-        }
+//        public String getCout() {
+//            return cout;
+//        }
+//
+//        public void setCout(String cout) {
+//            this.cout = cout;
+//        }
 
         public String getTitle() {
             return title;
@@ -261,7 +260,7 @@ public class AddNewRequest {
 
         @Override
         public String toString() {
-            return "Attachment{" + "cout='" + cout + '\'' + ", title='" + title + '\'' + ", size='" + size + '\'' + ", attachName='" + attachName + '\'' + '}';
+            return "Attachment{" + "cout='" +  '\'' + ", title='" + title + '\'' + ", size='" + size + '\'' + ", attachName='" + attachName + '\'' + '}';
         }
     }
 
