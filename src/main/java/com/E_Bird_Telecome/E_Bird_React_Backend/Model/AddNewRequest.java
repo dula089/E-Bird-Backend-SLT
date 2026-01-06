@@ -1,6 +1,5 @@
 package com.E_Bird_Telecome.E_Bird_React_Backend.Model;
 
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -31,16 +30,14 @@ public class AddNewRequest {
     private String status = "Pending";
     private List<Attachment> attachments = new ArrayList<>();
 
-
     private String forwardedBy;
     private List<ForwardingHistory> forwardingHistory = new ArrayList<>();
     private String lastForwardedDate;
 
-
     public AddNewRequest() {
     }
 
-
+    // Getters and Setters
     public String getId() {
         return id;
     }
@@ -185,7 +182,7 @@ public class AddNewRequest {
         this.attachments = attachments;
     }
 
-     public String getForwardedBy() {
+    public String getForwardedBy() {
         return forwardedBy;
     }
 
@@ -211,7 +208,7 @@ public class AddNewRequest {
 
 
     public static class Attachment {
-//        private String cout;
+        private String cout;  // Base64 encoded file data
         private String title;
         private String size;
         private String attachName;
@@ -220,19 +217,19 @@ public class AddNewRequest {
         }
 
         public Attachment(String cout, String title, String size, String attachName) {
-//            this.cout = cout;
+            this.cout = cout;
             this.title = title;
             this.size = size;
             this.attachName = attachName;
         }
 
-//        public String getCout() {
-//            return cout;
-//        }
-//
-//        public void setCout(String cout) {
-//            this.cout = cout;
-//        }
+        public String getCout() {
+            return cout;
+        }
+
+        public void setCout(String cout) {
+            this.cout = cout;
+        }
 
         public String getTitle() {
             return title;
@@ -260,11 +257,16 @@ public class AddNewRequest {
 
         @Override
         public String toString() {
-            return "Attachment{" + "cout='" +  '\'' + ", title='" + title + '\'' + ", size='" + size + '\'' + ", attachName='" + attachName + '\'' + '}';
+            return "Attachment{" +
+                    "title='" + title + '\'' +
+                    ", size='" + size + '\'' +
+                    ", attachName='" + attachName + '\'' +
+                    ", hasCout=" + (cout != null && !cout.isEmpty()) +
+                    '}';
         }
     }
 
-
+    // Inner class for ForwardingHistory
     public static class ForwardingHistory {
         private String timestamp;
         private String forwardedBy;
@@ -272,10 +274,8 @@ public class AddNewRequest {
         private String forwardedTo;
         private String remarks;
 
-
         public ForwardingHistory() {
         }
-
 
         public ForwardingHistory(String timestamp, String forwardedBy, String forwardedFrom, String forwardedTo, String remarks) {
             this.timestamp = timestamp;
@@ -284,7 +284,6 @@ public class AddNewRequest {
             this.forwardedTo = forwardedTo;
             this.remarks = remarks;
         }
-
 
         public String getTimestamp() {
             return timestamp;
@@ -328,12 +327,27 @@ public class AddNewRequest {
 
         @Override
         public String toString() {
-            return "ForwardingHistory{" + "timestamp='" + timestamp + '\'' + ", forwardedBy='" + forwardedBy + '\'' + ", forwardedFrom='" + forwardedFrom + '\'' + ", forwardedTo='" + forwardedTo + '\'' + ", remarks='" + remarks + '\'' + '}';
+            return "ForwardingHistory{" +
+                    "timestamp='" + timestamp + '\'' +
+                    ", forwardedBy='" + forwardedBy + '\'' +
+                    ", forwardedFrom='" + forwardedFrom + '\'' +
+                    ", forwardedTo='" + forwardedTo + '\'' +
+                    ", remarks='" + remarks + '\'' +
+                    '}';
         }
     }
 
     @Override
     public String toString() {
-        return "AddNewRequest{" + "id='" + id + '\'' + ", requestId='" + requestId + '\'' + ", status='" + status + '\'' + ", assignedBy='" + assignedBy + '\'' + ", assignTo='" + assignTo + '\'' + ", assignToName='" + assignToName + '\'' + ", forwardedBy='" + forwardedBy + '\'' + '}';
+        return "AddNewRequest{" +
+                "id='" + id + '\'' +
+                ", requestId='" + requestId + '\'' +
+                ", status='" + status + '\'' +
+                ", assignedBy='" + assignedBy + '\'' +
+                ", assignTo='" + assignTo + '\'' +
+                ", assignToName='" + assignToName + '\'' +
+                ", forwardedBy='" + forwardedBy + '\'' +
+                ", attachmentsCount=" + (attachments != null ? attachments.size() : 0) +
+                '}';
     }
 }
